@@ -9,7 +9,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Nosifer&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-    /* Full-screen canvas for Matrix effect */
     body, html {
       margin: 0;
       padding: 0;
@@ -24,12 +23,13 @@
       top: 0;
       left: 0;
       z-index: 0;
+      pointer-events: none;
     }
 
     .overlay {
       position: relative;
       z-index: 1;
-      background-color: rgba(0, 0, 0, 0.85);
+      background-color: rgba(0, 0, 0, 0.5); /* semi-transparent so matrix is visible */
       min-height: 100vh;
     }
 
@@ -80,10 +80,13 @@
 </head>
 <body>
 
-  <!-- Matrix Canvas Background -->
+  <!-- Matrix Canvas -->
   <canvas id="matrix"></canvas>
 
-  <!-- Portfolio Overlay -->
+  <!-- Audio for gentle typing -->
+  <audio id="typeSound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_83ef693bf1.mp3" preload="auto"></audio>
+
+  <!-- Page Content -->
   <div class="overlay">
     <div class="container">
       <h1>R0H17</h1>
@@ -155,15 +158,19 @@
     </div>
   </div>
 
-  <!-- Matrix Animation Script -->
   <script>
+    // Matrix Rain Animation
     const canvas = document.getElementById("matrix");
     const ctx = canvas.getContext("2d");
 
-    canvas.height = window.innerHeight;
-    canvas.width = window.innerWidth;
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
 
-    const katakana = "アァイィウエエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789$#@";
+    resizeCanvas();
+
+    const katakana = "アァイィウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789$#@";
     const letters = katakana.split("");
 
     const fontSize = 16;
@@ -173,6 +180,7 @@
     function drawMatrix() {
       ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
+
       ctx.fillStyle = "#0F0";
       ctx.font = fontSize + "px Fira Code";
 
@@ -188,10 +196,19 @@
     }
 
     setInterval(drawMatrix, 33);
-    window.addEventListener('resize', () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+
+    window.addEventListener("resize", resizeCanvas);
+
+    // Play typing sound gently on page load
+    window.addEventListener("load", () => {
+      const audio = document.getElementById("typeSound");
+      audio.volume = 0.1; // gentle volume
+      audio.play().catch(() => {
+        // user gesture may be required to play audio
+        console.log("Audio playback was prevented until user interacts.");
+      });
     });
   </script>
+
 </body>
 </html>
