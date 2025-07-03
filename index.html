@@ -5,14 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>R0H17 – Cybersecurity Trainer</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+    /* Import fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Nosifer&family=Fira+Code:wght@400;600&display=swap');
 
     body {
       margin: 0;
       padding: 0;
       background-color: #000;
       color: #00ff00;
-      font-family: 'Creepster', cursive;
+      font-family: 'Fira Code', monospace;
     }
 
     .container {
@@ -21,33 +22,21 @@
       padding: 20px;
     }
 
-    h1, h2 {
-      text-shadow: 0 0 5px #00ff00;
-    }
-
-    .glitch {
+    h1 {
+      font-family: 'Nosifer', cursive;
       font-size: 3em;
-      position: relative;
+      color: #00ff00;
+      text-shadow:
+        0 0 5px #00ff00,
+        0 0 10px #00ff00,
+        0 0 20px #00ff00;
       animation: flicker 1.5s infinite alternate;
     }
 
     @keyframes flicker {
-      0% { opacity: 1; }
-      50% { opacity: 0.4; }
-      100% { opacity: 1; }
-    }
-
-    ul {
-      list-style: square;
-    }
-
-    a {
-      color: #00ff00;
-      text-decoration: underline;
-    }
-
-    section {
-      margin-bottom: 40px;
+      0% { opacity: 1; text-shadow: 0 0 10px #00ff00; }
+      50% { opacity: 0.3; text-shadow: 0 0 2px #00ff00; }
+      100% { opacity: 1; text-shadow: 0 0 10px #00ff00; }
     }
 
     .header-bar {
@@ -55,18 +44,31 @@
       color: #000;
       padding: 8px 16px;
       font-weight: bold;
+      font-family: 'Fira Code', monospace;
+      margin-top: 30px;
+    }
+
+    a {
+      color: #00ff00;
+      text-decoration: underline;
+    }
+
+    ul {
+      list-style: square;
+    }
+
+    section {
+      margin-bottom: 30px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1 class="glitch">R0H17 — Cybersecurity Trainer & Pentester</h1>
+    <h1>R0H17</h1>
 
     <section>
       <div class="header-bar">About Me</div>
-      <p>
-        I’m Rohit Kumar Singh, an experienced Cybersecurity Trainer & Pentester based in Surat, India. I specialize in Vulnerability Assessment and Penetration Testing across platforms, and have a passion for simplifying complex cybersecurity concepts for learners. Currently, I train MSc-CS students and continuously upskill myself with the latest in cybersecurity.
-      </p>
+      <p>I’m Rohit Kumar Singh, an experienced Cybersecurity Trainer & Pentester based in Surat, India. I specialize in Vulnerability Assessment and Penetration Testing and simplify complex cybersecurity concepts for learners.</p>
     </section>
 
     <section>
@@ -106,8 +108,8 @@
     <section>
       <div class="header-bar">Projects</div>
       <ul>
-        <li><strong>ParaGen:</strong> Python-based multilingual paraphrase generator using Transformers and Google Translate API</li>
-        <li><strong>Techy:</strong> Web technology detection tool (Python, requests, bs4, socket, WHOIS)</li>
+        <li><strong>ParaGen:</strong> Python-based multilingual paraphrase generator</li>
+        <li><strong>Techy:</strong> Web technology detection tool in Python</li>
       </ul>
     </section>
 
